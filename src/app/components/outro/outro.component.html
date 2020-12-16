@@ -1,0 +1,21 @@
+<div class="info-container">
+    <mat-card id="info-card" class="ifo-card">
+        <div >
+        <mat-card-title>
+            {{heading}}
+        </mat-card-title>
+        <br>
+        <mat-card-subtitle>
+            {{subheading}}
+        </mat-card-subtitle>
+        <br>
+        <app-wave [hight]="300" [width]="500" [lineWidth]="3" [color]="color"></app-wave>
+        
+        <mat-card-actions>
+            <button class='button' mat-raised-button color="accent" type="start" (click)="start();">Finish</button>
+        </mat-card-actions>
+    <app-tts></app-tts>
+    </div>
+    </mat-card>
+    
+</div>

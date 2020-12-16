@@ -1,0 +1,27 @@
+<mat-toolbar>
+    <a mat-button class="companyName" routerLink="">
+      <span>Intervu</span>
+    </a>
+    <span class="fill-remaining-space"></span>
+<button mat-icon-button class="icon" [matMenuTriggerFor]="menu">
+<mat-icon>menu</mat-icon>
+</button>
+<mat-menu #menu="matMenu" [overlapTrigger]="false">
+<button mat-menu-item [routerLink]="['']">
+<mat-icon>home</mat-icon>
+<span>Home</span>
+</button>
+<button mat-menu-item [routerLink]="['interviewselection']">
+    <mat-icon>videocam</mat-icon>
+    <span>Interview</span>
+</button>
+<button mat-menu-item [routerLink]="['interviewresults']">
+  <mat-icon>videocam</mat-icon>
+  <span>Review Interviews</span>
+</button>
+<button mat-menu-item (click)="logout();" >
+<mat-icon>people_outline</mat-icon>
+<span>Sign out</span>
+</button>
+</mat-menu>
+</mat-toolbar>
