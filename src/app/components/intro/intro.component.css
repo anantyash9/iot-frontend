@@ -1,11 +1,13 @@
 .infro-card {
-    max-width: 600px;
-    width: 600px;
+    max-width: 60%;
+    width: 60%;
+    max-height: 80%;
+    height: 80%;
     text-align: center ;
   }
   .mat-card-content {
-    max-height: 100px;
-    max-width: 600px;
+    max-height: 10%;
+    max-width: 50%;
     overflow-y: auto;
   }
 .info-container {

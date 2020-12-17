@@ -16,11 +16,15 @@ export class OutroComponent implements OnInit {
   subheading;
   subscription;
   name;
+  public innerWidth: any;
+  public innerHeight: any;
 
   constructor(public interviewservice:InterviewService, public keycloakservice:KeycloakService,public ioService: IoService,public eventService:EventService,private router: Router,) 
   { this.keycloakservice.loadUserProfile().then(data=>{this.heading="Thats it "+data.firstName +" !"; this.name =data.firstName; } )}
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
     this.subheading="Thanks for taking the interview for  "+this.interviewservice.questionset.name
     this.subscription=this.eventService.audioStopping.subscribe(() => {
       console.log("audio stopped playing")

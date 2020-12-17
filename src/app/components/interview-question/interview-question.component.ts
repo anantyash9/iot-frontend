@@ -22,6 +22,8 @@ export class InterviewQuestionComponent implements OnInit {
   question;
   score;
   questionid;
+  public innerWidth: any;
+  public innerHeight: any;
 
   constructor(private router: Router,public interviewservice:InterviewService, public keycloakservice:KeycloakService,public ioService: IoService,public eventService:EventService,public microphone: MicrophoneComponent) 
   {this.heading=this.interviewservice.questionset.name+' Interview' ;
@@ -33,6 +35,8 @@ export class InterviewQuestionComponent implements OnInit {
   });  }
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
     this.dataloaded=false
     this.subscription=undefined;
     this.text='';

@@ -16,10 +16,14 @@ export class IntroComponent implements OnInit , OnDestroy {
   subheading;
   subscription;
   name;
+  public innerWidth: any;
+  public innerHeight: any;
   
   constructor(public interviewservice:InterviewService, public keycloakservice:KeycloakService,public ioService: IoService,public eventService:EventService,private router: Router,) {this.keycloakservice.loadUserProfile().then(data=>{this.heading="Hi "+data.firstName; this.name =data.firstName; } ) }
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
     this.subheading="This is an interview for "+this.interviewservice.questionset.name
     this.subscription=this.eventService.audioStopping.subscribe(() => {
       console.log("audio stopped playing")
