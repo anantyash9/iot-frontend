@@ -1,3 +1,4 @@
+import { SocketOptions } from 'dgram';
 import * as io from 'socket.io-client';
 
 declare const ss: any;
@@ -8,7 +9,7 @@ export class IoService {
     public lang: string;
 
     constructor() {
-      this.socketio = io();
+      this.socketio = io('',{path:'/socket.io/socket.io'});
       this.socket = this.socketio.on('connect', function() {
           console.log('connected');
       });

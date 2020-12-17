@@ -25,8 +25,8 @@ export class OutroComponent implements OnInit {
     this.subscription=this.eventService.audioStopping.subscribe(() => {
       console.log("audio stopped playing")
     });
-    let text=this.interviewservice.questionset.outro.replace('#named#',this.name );
-    this.ioService.sendMessage('tts', { text:this.interviewservice.questionset.outro,audio:{language:''} });
+    let text=this.interviewservice.questionset.outro.replace(/#named#/gi,this.name );
+    this.ioService.sendMessage('tts', { text:text,audio:{language:''} });
 
   }
   start(){

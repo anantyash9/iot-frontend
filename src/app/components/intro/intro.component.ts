@@ -24,7 +24,7 @@ export class IntroComponent implements OnInit , OnDestroy {
     this.subscription=this.eventService.audioStopping.subscribe(() => {
       console.log("audio stopped playing")
     });
-    let text=this.interviewservice.questionset.intro.replace('#named#', this.name);
+    let text=this.interviewservice.questionset.intro.replace(/#named#/gi, this.name);
     this.ioService.sendMessage('tts', { text:text,audio:{language:''} });
 
   }
