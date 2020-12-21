@@ -3,7 +3,7 @@
     <mat-card id="info-card" class="ifo-card" *ngIf="dataloaded" >
         <div >
         <mat-card-title>
-            {{heading}}
+            {{heading | titlecase}}
         </mat-card-title>
         <br>
         <mat-card-subtitle>
@@ -11,14 +11,13 @@
         </mat-card-subtitle>
         <br>
         <app-wave [hight]="innerHeight*0.20" [width]="innerWidth*0.55" [lineWidth]="3" [color]="color"></app-wave>
-        <mat-card-content>
+        <mat-card-content >
             {{text}}
         </mat-card-content>
         <br><br>
         <mat-card-actions>
             <button class='button' mat-raised-button color="accent" type="start" (click)='next()'>Next Question</button>
         </mat-card-actions>
-    <app-tts></app-tts>
     </div>
     </mat-card>
     

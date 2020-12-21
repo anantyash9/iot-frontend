@@ -6,6 +6,9 @@ import { Router} from '@angular/router';
 import { Result } from 'src/app/models/result.model';
 import {InterviewdetailsComponent} from '../interviewdetails/interviewdetails.component';
 import {MatDialog} from '@angular/material/dialog';
+import { pipe } from 'rxjs';
+import { element } from 'protractor';
+import { isDefined } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-interview-result',
@@ -34,9 +37,10 @@ export class InterviewResultComponent implements OnInit {
   onFetch(formvalue){
     this.fetching=true;
     this.interviewservice.getResults(formvalue.interview).subscribe(data=>{
+      
+      this.results=data.filter((element)=>{return isDefined(element.netQuestions)});
+      // console.log(data.filter((element)=>{return isDefined(element.netQuestions)}));
       this.fetching=false;
-      this.results=data;
-      console.log(this.results);
     })
   }
   showDetails(result:Result){

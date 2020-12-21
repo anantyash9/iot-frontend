@@ -1,14 +1,15 @@
 .infro-card {
-  max-width: 60%;
-  width: 60%;
-  max-height: 80%;
-  height: 80%;
+  max-width: 60vw;
+  width: 60vw;
+  max-height: 80vh;
+  height: 80vh;
   text-align: center ;
 }
 .mat-card-content {
-  max-height: 10%;
-  max-width: 50%;
+  width:60vw;;
+  max-width: inherit;
   overflow-y: auto;
+  text-align: center;
 }
 .info-container {
     width:100%;

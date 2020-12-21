@@ -1,8 +1,9 @@
 <div class="info-container">
-    <mat-card id="info-card" class="ifo-card">
+    <mat-spinner *ngIf="!loaded"></mat-spinner>
+    <mat-card id="info-card" class="info-card" *ngIf="loaded">
         <div >
         <mat-card-title>
-            {{heading}}
+            {{heading | titlecase}}
         </mat-card-title>
         <br>
         <mat-card-subtitle>
@@ -14,7 +15,6 @@
         <mat-card-actions>
             <button class='button' mat-raised-button color="accent" type="start" (click)="start();">Start Interview</button>
         </mat-card-actions>
-    <app-tts></app-tts>
     </div>
     </mat-card>
     

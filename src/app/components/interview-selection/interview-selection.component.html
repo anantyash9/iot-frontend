@@ -3,7 +3,7 @@
     <mat-card id="intro-card" class="intro-card" *ngIf="loaded" >
 <div >
         <mat-card-title>
-           Hi {{name}} ! <br><br> Welcome to Entrevista
+           Hi {{name | titlecase}} ! <br><br> Welcome to InterVU
         </mat-card-title>
         <br>
         <mat-card-subtitle>
@@ -16,7 +16,7 @@
         <mat-label>Interview</mat-label>
         <mat-select formControlName="interview">
             <mat-option *ngFor="let interview of questionsets" [value]="interview.name">
-              {{interview.name}}
+              {{interview.name | titlecase}}
             </mat-option>
           </mat-select>
         </mat-form-field><br><br>

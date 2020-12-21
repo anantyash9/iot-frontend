@@ -44,8 +44,7 @@ export class MicrophoneComponent implements OnInit {
       });
       me.eventService.resetInterface.subscribe(() => {
         me.onStop(); // stop recording & waveform
-        me.eventService.audioStopping.emit(); // stop playing audio
-        me.reset(); // reset the interface
+        me.eventService.audioStopping.emit(); // stop playing audio // reset the interface
       });
     }
     ngOnInit()
@@ -54,7 +53,7 @@ export class MicrophoneComponent implements OnInit {
         console.log(transcript);
       });
     }
-    onStart() {
+    onStart(speechContext) {
       let me = this;
       me.startDisabled = true;
       // make use of HTML 5/WebRTC, JavaScript getUserMedia()
@@ -77,10 +76,10 @@ export class MicrophoneComponent implements OnInit {
               // get intervals based blobs
               // value in milliseconds
               // as you might not want to make detect calls every seconds
-              timeSlice: 20000,
+              timeSlice: 14000,
 
               // only for audio track
-              // audioBitsPerSecond: 128000,
+              audioBitsPerSecond: 128000,
 
               // used by StereoAudioRecorder
               // the range 22050 to 96000.
@@ -90,7 +89,7 @@ export class MicrophoneComponent implements OnInit {
               // as soon as the stream is available
               ondataavailable(blob) {
                 if(!me.eventService.getIsPlaying()) {
-                  me.ioService.sendBinaryStream(blob);
+                  me.ioService.sendBinaryStream(blob,speechContext);
                 }
               }
           });
@@ -105,8 +104,10 @@ export class MicrophoneComponent implements OnInit {
       // recording stopped
       this.startDisabled = false;
       // stop audio recorder
+      try{
       this.recordAudio.stopRecording();
+      }
+      catch{console.log('recording already stopped')}
     }
 
-    reset() {}
 }

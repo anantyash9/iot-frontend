@@ -4,6 +4,7 @@ import {Location} from '@angular/common'
 import { Result } from 'src/app/models/result.model';
 import { InterviewService } from '../../services/interview.service';
 import { element } from 'protractor';
+import { isDefined } from '@angular/compiler/src/util';
 
 
 @Component({
@@ -25,7 +26,9 @@ export class InterviewdetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.result=this.interviewservice.result;
-    this.details=this.interviewservice.resultdetails;
+
+    this.details=this.interviewservice.resultdetails.filter((element)=>{return isDefined(element.interviewQuestion.score)});;
+    console.log(this.details)
     this.avgScore=(this.result.netScore/this.result.netWeight).toFixed(1);
     this.avgDifficulty=(this.result.netWeight/this.result.netQuestions).toFixed(1);
     if (this.result.active==true)
@@ -56,7 +59,6 @@ export class InterviewdetailsComponent implements OnInit {
     })
     this.tagcard.push(temp)
   })
-    console.log(this.tagcard)
 
     }
 }

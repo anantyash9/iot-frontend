@@ -6,7 +6,7 @@
         <mat-label>Interview</mat-label>
         <mat-select formControlName="interview">
             <mat-option *ngFor="let interview of questionsets" [value]="interview.name">
-              {{interview.name}}
+              {{interview.name | titlecase}}
             </mat-option>
           </mat-select>
         </mat-form-field> <button mat-raised-button color="primary" type="submit">Search</button>

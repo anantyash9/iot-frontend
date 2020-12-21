@@ -82,7 +82,12 @@ export class TtsComponent implements AfterViewInit {
   /**
    * Stop audio
    */
-  // stopOutput() {
-  //   this.outputSource.stop();
-  // }
+  stopOutput() {
+    try{
+    this.outputSource.disconnect()
+    }
+    catch{console.log('couldent shut off tts or tts already shut')}
+    this.eventService.audioStopping.emit(true)
+    this.eventService.setIsPlaying(false);
+  }
 }

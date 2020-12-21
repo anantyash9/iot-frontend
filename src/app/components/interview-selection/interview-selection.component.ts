@@ -22,7 +22,14 @@ export class InterviewSelectionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.interviewservice.loadQuestionSets().subscribe(questionsets => { this.questionsets = questionsets; this.loaded = true; })
+    this.interviewservice.loadQuestionSets().subscribe(questionsets => { 
+      this.interviewservice.getCurrentQuestion().subscribe(data=>{
+        console.log(data)
+        this.questionsets=questionsets.filter((questionset)=>{return questionset.name==data.body.interviewqs.questionset.name});
+      }
+      ,error=>{this.questionsets = questionsets;})
+      
+      this.loaded = true; })
   }
   onStart(formvalue){
     this.interviewservice.questionset=this.questionsets.filter((questionset)=>{return questionset.name==formvalue.interview})[0];
