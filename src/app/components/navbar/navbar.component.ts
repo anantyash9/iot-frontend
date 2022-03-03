@@ -7,10 +7,11 @@ import { KeycloakService } from 'keycloak-angular';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  Admin=false;
   constructor(private keycloak: KeycloakService) { }
 
   ngOnInit(): void {
+    console.log(this.keycloak.getUsername());
   }
   logout(){
     console.log("logout called");

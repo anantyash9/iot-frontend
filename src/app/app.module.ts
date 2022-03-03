@@ -19,13 +19,23 @@ import {KeyInitService} from "../app/services/key-init.service";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InterviewSelectionComponent } from './components/interview-selection/interview-selection.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { IntroComponent } from './components/intro/intro.component';
 import { InterviewQuestionComponent } from './components/interview-question/interview-question.component';
 import { OutroComponent } from './components/outro/outro.component';
 import { InterviewResultComponent } from './components/interview-result/interview-result.component';
 import { InterviewcardComponent } from './components/interviewcard/interviewcard.component';
 import {InterviewdetailsComponent} from '../app/components/interviewdetails/interviewdetails.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CaptureComponent } from './components/capture/capture.component';
+import { AttendenceViewComponent } from './components/attendence-view/attendence-view.component';
+import { AdminViewComponent } from './components/admin-view/admin-view.component';
+import {DevicesViewComponent} from './components/devices-view/devices-view';
+import { AddDeviceComponent } from './components/add-device/add-device.component';
+import {EditDeviceComponent} from './components/edit-device/edit-device.component';
+import { ConfirmDialogueComponent } from './components/confirm-dialogue/confirm-dialogue.component';
+import { SummaryPannelComponent } from './components/summary-pannel/summary-pannel.component';
+import { NgChartsModule } from 'ng2-charts';
 function initializeKeycloak(keycloak: KeycloakService) {
   // const keycloak = new KeycloakService();
   return () =>
@@ -35,12 +45,13 @@ function initializeKeycloak(keycloak: KeycloakService) {
         realm: environment.keycloak.realm,
         clientId: environment.keycloak.clientId,
       },
+      enableBearerInterceptor: true,
       loadUserProfileAtStartUp: true,
       initOptions: {
         onLoad: "login-required",
-        checkLoginIframe: true,
-      },
-      bearerExcludedUrls: ['/similarity','/api'],
+        checkLoginIframe: false,
+      },bearerPrefix: 'Bearer',
+      bearerExcludedUrls: ['/similarity'],
     });
 }
 
@@ -58,7 +69,16 @@ function initializeKeycloak(keycloak: KeycloakService) {
     OutroComponent,
     InterviewResultComponent,
     InterviewcardComponent,
-    InterviewdetailsComponent
+    InterviewdetailsComponent,
+    RegisterComponent,
+    CaptureComponent,
+    AttendenceViewComponent,
+    AdminViewComponent,
+    DevicesViewComponent,
+    AddDeviceComponent,
+    EditDeviceComponent,
+    ConfirmDialogueComponent,
+    SummaryPannelComponent
     
   ],
   imports: [
@@ -69,8 +89,12 @@ function initializeKeycloak(keycloak: KeycloakService) {
     DemoMaterialModule,
     FlexLayoutModule,
     KeycloakAngularModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    NgChartsModule
+    
   ],
+  exports:[CaptureComponent],
   providers: [ 
     {
       provide: APP_INITIALIZER,

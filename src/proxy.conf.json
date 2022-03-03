@@ -1,6 +1,10 @@
 {
     "/api": {
-      "target": "http://35.232.58.209:9600",
+      "target": "http://localhost:8080",
+      "secure": false
+    },
+    "/authsds": {
+      "target": "https://keycloak.developers.surveymaster.in",
       "secure": false
     },
     "/socket.io": {
@@ -11,5 +15,5 @@
         "target": "http://localhost:5003",
         "secure": false
       },
-    "changeOrigin": true
+    "changeOrigin": false
   }
