@@ -1,8 +1,12 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
     <a mat-button class="companyName" routerLink="">
       <span>Contactless Auth</span>
     </a>
     <span class="fill-remaining-space"></span>
+    <app-menu 
+      [options]="options$ | async"
+      (themeChange)="themeChangeHandler($event)">
+    </app-menu>
 <button mat-icon-button class="icon" [matMenuTriggerFor]="menu">
 <mat-icon>menu</mat-icon>
 </button>

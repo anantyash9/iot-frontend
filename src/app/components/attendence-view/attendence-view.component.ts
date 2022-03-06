@@ -10,7 +10,7 @@ import { QuarkusService } from 'src/app/services/quarkus/quarkus.service';
   styleUrls: ['./attendence-view.component.css']
 })
 export class AttendenceViewComponent implements AfterViewInit{
-  displayedColumns = ['Authenticated','Date',"Time", 'Score','Location'];
+  displayedColumns = ['Date',"Time",'Authenticated', 'Score',"Temperature",'Location'];
   dataSource: MatTableDataSource<UserData>;
   tempgreen="#32a852"
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -32,6 +32,8 @@ export class AttendenceViewComponent implements AfterViewInit{
         var date = new Date(Date.parse(element.createdAt));
         var date_str=date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
         var time_str=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+        
+        element.score=Math.min(Math.round((1-element.score)*100),100);
         Object.assign(element, {date: date_str});
         Object.assign(element, {time: time_str});
         users.push(element);
@@ -60,6 +62,18 @@ export interface UserData {
   time:string;
   macAddress: string;
   authenticated:boolean;
-  score:string;
+  faceIdentified:boolean;
+  score:number;
+  temperature:number;
+
 
 }
+// authenticated: true
+// createdAt: "2022-03-06T15:36:02.217755Z"
+// date: "6-3-2022"
+// faceIdentified: true
+// id: 277
+// identifier: 1
+// score: 0.26469192021705595
+// temperature: 97.6
+// time: "21:6:2"

@@ -1,10 +1,13 @@
 export class Device {
-    deviceName: string;
-  deviceId: string;
-  deviceType: string;
-  deviceLocation: string;
-  deviceEnabled: boolean;
   deviceActivationDate: string;
   deviceDeactivationDate: string;
-
+  createdAt: string;
+  deviceIdentifier: string;
+  deviceName: string;
+  deviceType: string;
+  enabled: boolean;
+  id: number;
+  location: string;
+  status: false;
+  updatedAt: string;
 }

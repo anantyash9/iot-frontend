@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Stream } from 'stream';
 import { QuarkusService } from 'src/app/services/quarkus/quarkus.service';
 
 @Component({
